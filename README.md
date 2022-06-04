@@ -6,7 +6,7 @@
 ![](https://fastly.jsdelivr.net/gh/18476305640/typora@master/image/16543043627621654304361940.png)
 
 <!--指示灯-->
-<script src="https://fastly.jsdelivr.net/gh/18476305640/indicator-light@v1.2/indicatorLight.js" ></script>
+<script src="https://fastly.jsdelivr.net/gh/18476305640/indicator-light@v1.4/indicatorLight.js" ></script>
 
 效果：
 ![](https://fastly.jsdelivr.net/gh/18476305640/typora@master/image/16543044085731654304407772.png)
