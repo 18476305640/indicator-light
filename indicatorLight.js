@@ -12,9 +12,9 @@ $(function () {
                         </div>
                     </div>
             `)
-    //var arr = ["h1","h2","h3","h4","h5","h6"]
-    var test_box = $("#cnblogs_post_body");     //文章容器
-    var test_box_childs = test_box.children();  //文章的子节点
+    var target_title = ["h1","h2","h3"]
+    var text_box = $("#cnblogs_post_body");     //文章容器
+    var text_box_childs = text_box.children();  //文章的子节点
     var pick_title_node = []        //有效的title节点
 
     //每个小盒子的长度
@@ -32,11 +32,14 @@ $(function () {
 
 
     //选择出标题有效元素节点
-    for (i = 0; i < test_box_childs.length; i++) {
-        unit_node = test_box_childs[i];
-        if (unit_node.localName.indexOf("h1") == 0 || unit_node.localName.indexOf("h2") == 0 || unit_node.localName.indexOf("h3") == 0) {
-            pick_title_node[pick_title_node.length] = unit_node
+    for (i = 0; i < text_box_childs.length; i++) {
+        unit_node = text_box_childs[i];
+        for(let j = 0; j < target_title.length; j++) {
+            if (unit_node.localName.indexOf(target_title[j]) == 0) {
+                pick_title_node[pick_title_node.length] = unit_node
+            }
         }
+        
     }
     //与主题结耦了，判断是用我们的指示灯还是主题的目录
     if (pick_title_node.length > 20 || pick_title_node.length == 0) {
