@@ -141,8 +141,13 @@ $(function () {
     let refresh = debounce(toLamp, 50)
 
     //有动画地滚动
+    let st = null; //保证多次执行 ScrollTo 函数不会相互影响
     function ScrollTo(scroll, top) {
-        let st = setInterval(function () {
+        if(st != null ) {
+            //关闭上一次未执行完成的滚动
+            clearInterval(st);
+        }
+        st = setInterval(function () {
             let currentTop = $(scroll).scrollTop();
             let currentTo = 0;
             //每次移动的跨度
@@ -150,7 +155,9 @@ $(function () {
             //当在跨度内时，直接到达
             if (currentTop >= top - span && currentTop <= top + span) {
                 $(scroll).scrollTop(top);
-                clearInterval(st);
+                let tmp_st = st;
+                st = null;
+                clearInterval(tmp_st);
                 return;
             }
             //如果不在跨度内时，根据当前的位置与目的位置进行上下移动指定跨度
